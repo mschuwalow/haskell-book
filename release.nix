@@ -59,8 +59,8 @@ let
   };
 
   configured = pkgs { inherit config; };
-
 in
 {
+  pkgs         = configured
   haskell-book = configured.haskellPackages.haskell-book;
 }
