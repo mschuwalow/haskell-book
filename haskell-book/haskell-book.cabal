@@ -1,0 +1,15 @@
+cabal-version:       >=1.10
+
+name:                haskell-book
+version:             0.0.0.1
+author:              Maxim Schuwalow
+maintainer:          maxim.schuwalow@gmail.com
+build-type:          Simple
+extra-source-files:  CHANGELOG.md
+
+executable haskell-book
+  main-is:             Main.hs
+  build-depends:       base >=4.12 && <4.13
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  ghc-options:         -Wall
