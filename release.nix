@@ -1,4 +1,4 @@
-{ pkgs ? (import ./nixpkgs.nix { fetchgit = (import <nixpkgs> {}).fetchgit; }) }:
+{ pkgs ? import ./nixpkgs.nix }:
 let
   # Disable tests for these packages
   dontCheckPackages = [
