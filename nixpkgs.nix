@@ -1,6 +1,6 @@
 { fetchgit }:
 let
-  rev = "141b7210cb0f4684d8c88f4c870cf1e6663c47a2";
+  rev = "bd6ba87381ef6274a830253b60e481209d4d7c7d";
   sha256 = "0vg3rjxf1w0vgxnmpg5p80adgdcjv4f23ggsv1aakq03ga36y294";
 in
 import (
