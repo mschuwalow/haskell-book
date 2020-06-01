@@ -5,6 +5,6 @@ mkDerivation {
   src = ../haskell-book;
   isLibrary = false;
   isExecutable = true;
-  executableHaskellDepends = [ base ];
   license = stdenv.lib.licenses.asl20;
+  executableHaskellDepends = [ base ];
 }

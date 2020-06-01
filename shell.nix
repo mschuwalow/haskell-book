@@ -7,5 +7,5 @@ let
 in
 release.pkgs.stdenv.mkDerivation {
   name = "shell";
-  buildInputs = release.haskell-book.env.buildInputs ++ [ hie pkgs.cabal-install ];
+  buildInputs = release.haskell-book.env.buildInputs ++ [ hie pkgs.cabal-install pkgs.stack ];
 }
