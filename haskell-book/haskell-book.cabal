@@ -9,7 +9,8 @@ extra-source-files:  README.md, CHANGELOG.md
 
 library
   build-depends:       base ^>=4.12.0.0
-  exposed-modules:     Ch9.EnumFromTo,
+  exposed-modules:     Ch8.NumbersIntoWords,
+                       Ch9.EnumFromTo,
                        Ch9.ThyFearfulSymmetry,
                        Ch9.PoemLines,
                        Ch9.ComprehendThyLists,
