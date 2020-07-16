@@ -8,7 +8,7 @@ maintainer:          maxim.schuwalow@gmail.com
 extra-source-files:  README.md, CHANGELOG.md
 
 library
-  build-depends:       base ^>=4.12.0.0
+  build-depends:       base ^>=4.12.0.0, time ^>= 1.8.0.2
   exposed-modules:     Ch8.NumbersIntoWords,
                        Ch9.EnumFromTo,
                        Ch9.ThyFearfulSymmetry,
@@ -21,7 +21,11 @@ library
                        Ch9.Zipping,
                        Ch9.Exercises,
                        Ch9.Cipher,
-                       Ch9.Std
+                       Ch9.Std,
+                       Ch10.DatabaseProcessing,
+                       Ch10.FibScan,
+                       Ch10.WarmupAndReview,
+                       Ch10.RewriteUsingFold
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
