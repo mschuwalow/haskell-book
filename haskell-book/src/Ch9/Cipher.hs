@@ -8,21 +8,31 @@ minOrdUpper = ord 'A'
 minOrdLower :: Int
 minOrdLower = ord 'a'
 
+base :: Char -> Int
+base x =
+  if isLower x
+  then minOrdUpper
+  else minOrdLower
+
+encodeChar :: Char -> Bool
+encodeChar x =
+  isLower x || isUpper x
+
 alphSize :: Int
 alphSize = length ['a' .. 'z']
+
+charVal :: Char -> Int
+charVal x = ord x - base x
 
 caesarCipher :: Int -> (String -> String, String -> String)
 caesarCipher n =
   (ceasar n, ceasar (-n))
   where
       ceasar _ [] = []
-      ceasar key (x : xs) = chr (shiftedVal + base) : ceasar key xs
+      ceasar key (x : xs) =
+        chr (shiftedVal + base x) : ceasar key xs
         where
-          k = key `mod` alphSize
-          isUp = isUpper x
-          isLo = isLower x
-          base = if isUp then minOrdUpper else minOrdLower
-          charVal = ord x - base
+          key' = key `mod` alphSize
           shiftedVal
-            | isUp || isLo = (charVal + k) `mod` alphSize
-            | otherwise = charVal
+            | encodeChar x = ((charVal x) + key') `mod` alphSize
+            | otherwise    = charVal x

@@ -33,4 +33,4 @@ allLanguages =
   [Haskell, Agda, Idris, PureScript]
 
 allProgrammers :: [Programmer]
-allProgrammers = undefined
+allProgrammers = [ Programmer { os = os, lang = lang } | os <- allOperatingSystems, lang <- allLanguages ]
