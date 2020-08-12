@@ -35,7 +35,14 @@ library
                        Ch11.Vigenere,
                        Ch11.AsPatterns,
                        Ch11.Phone,
-                       Ch11.Hutton
+                       Ch11.Hutton,
+                       Ch12.StringProcessing,
+                       Ch12.ValidateTheWord,
+                       Ch12.Natural,
+                       Ch12.MaybeLib,
+                       Ch12.EitherLib,
+                       Ch12.Unfolds,
+                       Ch12.BinaryTree
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
