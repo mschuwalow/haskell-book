@@ -63,4 +63,5 @@ in
 {
   pkgs         = configured;
   haskell-book = configured.haskellPackages.haskell-book;
+  hello        = configured.haskellPackages.hello;
 }
