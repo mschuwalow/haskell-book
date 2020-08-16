@@ -1,11 +1,16 @@
 module Ch9.PoemLines where
 
+firstSen :: [Char]
 firstSen = "Tyger Tyger, burning bright\n"
+secondSen :: [Char]
 secondSen = "In the forests of the night\n"
+thirdSen :: [Char]
 thirdSen = "What immortal hand or eye\n"
+fourthSen :: [Char]
 fourthSen = "Could frame thy fearful\
 \ symmetry?"
 
+sentences :: [Char]
 sentences = firstSen ++ secondSen ++ thirdSen ++ fourthSen
 
 myLines :: String -> [String]

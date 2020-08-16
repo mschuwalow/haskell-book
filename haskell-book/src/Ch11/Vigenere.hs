@@ -1,13 +1,12 @@
-module Ch11.Vigenere where
+module Ch11.Vigenere (
+  vigenereCipher
+) where
 
+import Ch9.Cipher as Cipher
 import Data.Char
 import Data.List (zip, cycle)
-import Ch9.Cipher as Cipher
 
-type Encode = String -> String
-type Decode = String -> String
-
-vigenereCipher :: String -> (Encode, Decode)
+vigenereCipher :: String -> (Cipher.Encode, Cipher.Decode)
 vigenereCipher code =
   (encode, decode)
   where

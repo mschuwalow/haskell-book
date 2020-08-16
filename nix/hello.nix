@@ -1,10 +1,11 @@
-{ mkDerivation, base, stdenv }:
+{ mkDerivation, stdenv, base }:
 mkDerivation {
   pname = "hello";
-  version = "0.0.0.1";
+  version = "0.1.0.0";
   src = ../hello;
-  isLibrary = false;
-  isExecutable = true;
   license = stdenv.lib.licenses.asl20;
-  libraryHaskellDepends = [ base ];
+  isExecutable = true;
+  executableHaskellDepends = [
+    base
+  ];
 }

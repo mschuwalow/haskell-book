@@ -2,17 +2,16 @@ module Ch9.Cipher where
 
 import Data.Char
 
-minOrdUpper :: Int
-minOrdUpper = ord 'A'
-
-minOrdLower :: Int
-minOrdLower = ord 'a'
+type Encode = String -> String
+type Decode = String -> String
 
 base :: Char -> Int
 base x =
-  if isLower x
-  then minOrdUpper
-  else minOrdLower
+  if isLower x then
+    ord 'a'
+  else if isUpper x then
+    ord 'A'
+  else 0
 
 encodeChar :: Char -> Bool
 encodeChar x =
@@ -24,7 +23,7 @@ alphSize = length ['a' .. 'z']
 charVal :: Char -> Int
 charVal x = ord x - base x
 
-caesarCipher :: Int -> (String -> String, String -> String)
+caesarCipher :: Int -> (Encode, Decode)
 caesarCipher n =
   (ceasar n, ceasar (-n))
   where
@@ -32,7 +31,6 @@ caesarCipher n =
       ceasar key (x : xs) =
         chr (shiftedVal + base x) : ceasar key xs
         where
-          key' = key `mod` alphSize
           shiftedVal
-            | encodeChar x = ((charVal x) + key') `mod` alphSize
+            | encodeChar x = ((charVal x) + key) `mod` alphSize
             | otherwise    = charVal x

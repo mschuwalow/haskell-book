@@ -1,7 +1,12 @@
-{ pkgs ? import ./nixpkgs.nix }:
+{ nixpkgs ? import ./nixpkgs.nix }:
 let
+  # default compiler
+  compiler = "ghc882";
+
   # Disable tests for these packages
   dontCheckPackages = [
+    "network"
+    "streaming-commons"
   ];
 
   # Jailbreak these packages
@@ -12,56 +17,51 @@ let
   dontHaddockPackages = [
   ];
 
-  config = {
-    packageOverrides = pkgs: rec {
-      haskellPackages =
-        let
-          generatedOverrides = haskellPackagesNew: haskellPackagesOld:
-            let
-              toPackage = file: _: {
-                name  = builtins.replaceStrings [ ".nix" ] [ "" ] file;
+  mkOverlay = compiler: self: super: {
+    myHaskellPackages =
+      let
+        generatedOverrides = haskellPackagesNew: haskellPackagesOld:
+          let
+            toPackage = file: _: {
+              name  = builtins.replaceStrings [ ".nix" ] [ "" ] file;
+              value = haskellPackagesNew.callPackage (./. + "/nix/${file}") { };
+            };
+            source =
+              super.nix-gitignore.gitignoreSource [./.gitignore] ./.;
+          in
+            super.lib.mapAttrs' toPackage (builtins.readDir "${source}/nix");
 
-                value = haskellPackagesNew.callPackage (./. + "/nix/${file}") { };
-              };
+        makeOverrides = function: names: haskellPackagesNew: haskellPackagesOld:
+          let
+            toPackage = name: {
+              inherit name;
+              value = function haskellPackagesOld.${name};
+            };
+          in
+            builtins.listToAttrs (map toPackage names);
 
-            in
-              pkgs.lib.mapAttrs' toPackage (builtins.readDir ./nix);
+        # More exotic overrides go here
+        manualOverrides = haskellPackagesNew: haskellPackagesOld: {
+        };
 
-          makeOverrides =
-            function: names: haskellPackagesNew: haskellPackagesOld:
-              let
-                toPackage = name: {
-                  inherit name;
-
-                  value = function haskellPackagesOld.${name};
-                };
-
-            in
-              builtins.listToAttrs (map toPackage names);
-
-          composeExtensionsList =
-            pkgs.lib.fold pkgs.lib.composeExtensions (_: _: {});
-
-          # More exotic overrides go here
-          manualOverrides = haskellPackagesNew: haskellPackagesOld: {
-          };
-        in
-          pkgs.haskellPackages.override {
-            overrides = composeExtensionsList [
-              generatedOverrides
-              (makeOverrides pkgs.haskell.lib.dontCheck   dontCheckPackages  )
-              (makeOverrides pkgs.haskell.lib.doJailbreak doJailbreakPackages)
-              (makeOverrides pkgs.haskell.lib.dontHaddock dontHaddockPackages)
-              manualOverrides
-            ];
-          };
-    };
+      in
+        super.haskell.packages.${compiler}.override {
+          overrides = super.lib.foldr super.lib.composeExtensions (_:_:{}) [
+            generatedOverrides
+            (makeOverrides pkgs.haskell.lib.dontCheck   dontCheckPackages  )
+            (makeOverrides pkgs.haskell.lib.doJailbreak doJailbreakPackages)
+            (makeOverrides pkgs.haskell.lib.dontHaddock dontHaddockPackages)
+            manualOverrides
+          ];
+        };
   };
 
-  configured = pkgs { inherit config; };
+  overlays = [ (mkOverlay compiler) ];
+  pkgs = nixpkgs { inherit overlays; };
 in
 {
-  pkgs         = configured;
-  haskell-book = configured.haskellPackages.haskell-book;
-  hello        = configured.haskellPackages.hello;
+  inherit compiler overlays pkgs;
+  hangman      = pkgs.myHaskellPackages.hangman;
+  haskell-book = pkgs.myHaskellPackages.haskell-book;
+  hello        = pkgs.myHaskellPackages.hello;
 }
