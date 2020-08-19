@@ -6,9 +6,11 @@ let
 in
   pkgs.myHaskellPackages.shellFor {
     packages = pkgs: with pkgs; [
-      hello
+      addition
       hangman
       haskell-book
+      hello
+      morse
     ];
     withHoogle = true;
     nativeBuildInputs = [
