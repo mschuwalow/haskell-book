@@ -14,6 +14,7 @@ myElem :: Eq a => a -> [a] -> Bool
 myElem x =
   myAny (== x)
 
+myElem' :: (Foldable t, Eq a) => a -> t a -> Bool
 myElem' x =
   foldr (\next acc -> acc || (next == x)) False
 

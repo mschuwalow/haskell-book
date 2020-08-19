@@ -6,21 +6,26 @@ module Ch10.FibScan where
 --lazyFib :: [Int]
 --lazyFib = 0:1:zipWith (+) lazyFib (tail lazyFib)
 
+fibs :: [Integer]
 fibs = 1 : scanl (+) 1 fibs
 
+fibs20 :: [Integer]
 fibs20 = take 20 fibs
 
 -- [1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,4181,6765]
 
 --2.
+fibs100 :: [Integer]
 fibs100 = takeWhile (< 100) fibs
 
 -- fibs100  ->  [1,1,2,3,5,8,13,21,34,55,89]
 
 --3.
+factorialScan :: Int -> Int
 factorialScan n = (scanl (*) 1 [1 .. n]) !! n
 
 --Amin
+factorial :: (Num b, Enum b) => Int -> [b]
 factorial n = (scanl (flip (*)) 1 . take n) [1 ..]
 -- factorialScan 10  ->  3628800
 

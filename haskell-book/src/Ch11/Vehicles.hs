@@ -25,12 +25,16 @@ data Vehicle
   | Plane Airline Size
   deriving (Eq, Show)
 
+myCar :: Vehicle
 myCar = Car Mini (Price 14000)
 
+urCar :: Vehicle
 urCar = Car Mazda (Price 20000)
 
+clownCar :: Vehicle
 clownCar = Car Tata (Price 7000)
 
+doge :: Size -> Vehicle
 doge = Plane PapuAir
 
 isCar :: Vehicle -> Bool

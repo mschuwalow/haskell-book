@@ -2,7 +2,6 @@ module Ch11.Phone where
 
 import Data.Char
 import Data.List
-import Data.Map (Map)
 import qualified Data.Map as Map
 
 type Digit = Char
@@ -50,11 +49,11 @@ pressesFor x (Button _ xs) =
   (+ 1) . maybe undefined id . findIndex (== x) $ xs
 
 reverseTaps :: Phone -> Char -> [(Digit, Presses)]
-reverseTaps phone@(Phone buttons) x =
+reverseTaps p@(Phone _) x =
   prefix ++ [(buttonDigit button, presses)]
   where
     x' = toLower x
-    button = findButton phone x'
+    button = findButton p x'
     presses = pressesFor x' button
     prefix =
       if isUpper x
@@ -62,19 +61,19 @@ reverseTaps phone@(Phone buttons) x =
         else []
 
 fingerTaps :: Phone -> String -> Presses
-fingerTaps phone =
+fingerTaps p =
   foldr f 0
   where
     f :: Char -> Int -> Int
     f x acc =
-      (foldr (+) 0 . fmap snd . reverseTaps phone $ x) + acc
+      (foldr (+) 0 . fmap snd . reverseTaps p $ x) + acc
 
 mostPopularDigit :: Phone -> String -> Char
-mostPopularDigit phone str =
+mostPopularDigit p str =
   fst . maximumBy (ordOf) $ taps'
   where
     ordOf x y = compare (snd x) (snd y)
-    taps = str >>= (reverseTaps phone)
+    taps = str >>= (reverseTaps p)
     taps' = Map.toList . foldr (uncurry (Map.insertWith (+))) Map.empty $ taps
 
 convo :: [String]

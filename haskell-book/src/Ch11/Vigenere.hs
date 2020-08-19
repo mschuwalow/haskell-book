@@ -4,8 +4,6 @@ module Ch11.Vigenere
 where
 
 import Ch9.Cipher as Cipher
-import Data.Char
-import Data.List (cycle, zip)
 
 vigenereCipher :: String -> (Cipher.Encode, Cipher.Decode)
 vigenereCipher code =

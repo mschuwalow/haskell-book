@@ -18,4 +18,4 @@ integerToNat n =
     else Nothing
   where
     go 0 = Zero
-    go n = Succ (go (n - 1))
+    go i = Succ (go (i - 1))

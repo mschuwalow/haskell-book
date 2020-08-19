@@ -5,10 +5,10 @@ import Data.Char
 isSubsequenceOf :: Eq a => [a] -> [a] -> Bool
 isSubsequenceOf [] _ = True
 isSubsequenceOf _ [] = False
-isSubsequenceOf (x : xs) phrase@(y : ys) =
-  if x `elem` phrase
+isSubsequenceOf xss@(x : xs) (y : ys) =
+  if x == y
     then isSubsequenceOf xs ys
-    else isSubsequenceOf (x : xs) ys
+    else isSubsequenceOf xss ys
 
 makePair :: String -> (String, String)
 makePair xs = (xs, capitalizeWord xs)
@@ -19,6 +19,7 @@ capitalizedWords =
 
 capitalizeWord :: String -> String
 capitalizeWord (x : xs) = (toUpper x) : xs
+capitalizeWord [] = []
 
 capitalizeParagraph :: String -> String
 capitalizeParagraph para = go (capitalizeWord para)

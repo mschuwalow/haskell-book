@@ -34,4 +34,4 @@ allLanguages =
   [Haskell, Agda, Idris, PureScript]
 
 allProgrammers :: [Programmer]
-allProgrammers = [Programmer {os = os, lang = lang} | os <- allOperatingSystems, lang <- allLanguages]
+allProgrammers = [Programmer {os = os', lang = lang'} | os' <- allOperatingSystems, lang' <- allLanguages]

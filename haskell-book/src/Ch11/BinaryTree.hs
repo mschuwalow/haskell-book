@@ -12,9 +12,9 @@ insert' ::
   BinaryTree a
 insert' b Leaf = Node Leaf b Leaf
 insert' b (Node left a right)
-  | b == a = Node left a right
-  | b < a = Node (insert' b left) a right
-  | b > a = Node left a (insert' b right)
+  | b == a    = Node left a right
+  | b < a     = Node (insert' b left) a right
+  | otherwise = Node left a (insert' b right)
 
 mapTree ::
   (a -> b) ->
@@ -31,6 +31,7 @@ testTree' =
     1
     (Node Leaf 4 Leaf)
 
+mapExpected :: BinaryTree Integer
 mapExpected =
   Node
     (Node Leaf 4 Leaf)
