@@ -5,9 +5,5 @@ mkDerivation {
   src = ../hangman;
   license = stdenv.lib.licenses.asl20;
   isExecutable = true;
-  libraryHaskellDepends = [
-    base
-    split
-    random
-  ];
+  libraryHaskellDepends = [ base split random ];
 }

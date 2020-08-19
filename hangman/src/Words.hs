@@ -1,13 +1,16 @@
-module Words (
-  randomWord
-) where
+module Words
+  ( randomWord,
+  )
+where
 
 import Paths_hangman (getDataFileName)
 import System.Random (randomRIO)
 
-newtype WordList = WordList {
-  unWordList :: [String]
-} deriving (Eq, Show)
+newtype WordList
+  = WordList
+      { unWordList :: [String]
+      }
+  deriving (Eq, Show)
 
 minWordLength :: Int
 minWordLength = 5
@@ -27,8 +30,8 @@ gameWords =
   where
     gameLength w =
       let l = length w
-      in     l >= minWordLength
-          && l <  maxWordLength
+       in l >= minWordLength
+            && l < maxWordLength
 
 selectRandomWord :: WordList -> IO String
 selectRandomWord wl = do

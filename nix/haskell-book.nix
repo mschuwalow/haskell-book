@@ -6,8 +6,5 @@ mkDerivation {
   license = stdenv.lib.licenses.asl20;
   isExecutable = false;
   isLibrary = true;
-  libraryHaskellDepends = [
-    base
-    either
-  ];
+  libraryHaskellDepends = [ base either ];
 }

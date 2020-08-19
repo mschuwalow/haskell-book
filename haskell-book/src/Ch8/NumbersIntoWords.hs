@@ -22,9 +22,9 @@ digits =
   reverse . go . abs
   where
     go n
-      | n < 10 = [ n ]
+      | n < 10 = [n]
       | otherwise = mod n 10 : (go $ div n 10)
 
 wordNumber :: Int -> String
 wordNumber =
-   intercalate "-" . map digitToWord . digits
+  intercalate "-" . map digitToWord . digits

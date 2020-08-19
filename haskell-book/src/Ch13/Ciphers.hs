@@ -1,12 +1,14 @@
 module Ch13.Ciphers where
 
-import Ch9.Cipher     (caesarCipher)
-import Ch11.Vigenere  (vigenereCipher)
-import Control.Monad  (forever)
-import System.IO      (BufferMode(NoBuffering),
-                       hSetBuffering,
-                       stdout)
-import Text.Read      (readMaybe)
+import Ch11.Vigenere (vigenereCipher)
+import Ch9.Cipher (caesarCipher)
+import Control.Monad (forever)
+import System.IO
+  ( BufferMode (NoBuffering),
+    hSetBuffering,
+    stdout,
+  )
+import Text.Read (readMaybe)
 
 caesarEncode :: IO ()
 caesarEncode =

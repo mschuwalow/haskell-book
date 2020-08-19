@@ -5,8 +5,5 @@ mkDerivation {
   src = ../morse;
   license = stdenv.lib.licenses.asl20;
   isExecutable = true;
-  executableHaskellDepends = [
-    base
-    QuickCheck
-  ];
+  executableHaskellDepends = [ base QuickCheck ];
 }

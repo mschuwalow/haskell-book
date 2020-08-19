@@ -10,13 +10,13 @@ notThe s = Just s
 replaceThe :: String -> String
 replaceThe =
   concat
-  . intersperse " "
-  . fmap (maybe "a" id . notThe)
-  . words
+    . intersperse " "
+    . fmap (maybe "a" id . notThe)
+    . words
 
 startsWithVowel :: String -> Bool
 startsWithVowel [] = False
-startsWithVowel (x:_)
+startsWithVowel (x : _)
   | isVowel x = True
   | otherwise = False
 
@@ -32,14 +32,14 @@ isVowel x = case toLower x of
 countVowels :: String -> Int
 countVowels =
   length
-  . filter isVowel
+    . filter isVowel
 
 countTheBeforeVowel :: String -> Integer
 countTheBeforeVowel =
   go 0 . words
   where
     go :: Integer -> [String] -> Integer
-    go n (x1:x2:xs)
-      | x1 == "the" && startsWithVowel x2 = go (n+1) xs
+    go n (x1 : x2 : xs)
+      | x1 == "the" && startsWithVowel x2 = go (n + 1) xs
       | otherwise = go n xs
     go n _ = n

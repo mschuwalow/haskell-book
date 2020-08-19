@@ -1,6 +1,7 @@
 module Ch10.WarmupAndReview where
 
 stops = "pbtdkg"
+
 vowels = "aeiou"
 
 -- 1a
@@ -16,9 +17,10 @@ stopVowelStopCombos' =
 
 -- 1c
 nouns = ["people", "history", "way", "art", "world"]
+
 verbs = ["be", "have", "do", "say", "make", "go", "take", "come", "see"]
 
-sentences = [(n1,v,n2) | n1 <- nouns, v <- verbs, n2 <- nouns]
+sentences = [(n1, v, n2) | n1 <- nouns, v <- verbs, n2 <- nouns]
 
 --3
 secFunc x =

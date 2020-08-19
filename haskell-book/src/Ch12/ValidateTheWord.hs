@@ -1,7 +1,7 @@
 module Ch12.ValidateTheWord where
 
-import Data.Char (toLower)
 import Ch12.StringProcessing (isVowel)
+import Data.Char (toLower)
 
 isConsonant :: Char -> Bool
 isConsonant x = case toLower x of
@@ -26,22 +26,23 @@ isConsonant x = case toLower x of
   'x' -> True
   'y' -> True
   'z' -> True
-  _  -> False
+  _ -> False
 
-newtype Word' =
-  Word' String deriving (Eq, Show)
+newtype Word'
+  = Word' String
+  deriving (Eq, Show)
 
 mkWord :: String -> Maybe Word'
 mkWord s =
   if (nVowels <= nConsonants)
-  then Just $ Word' s
-  else Nothing
+    then Just $ Word' s
+    else Nothing
   where
     nVowels =
       length
-      . filter isVowel
-      $ s
+        . filter isVowel
+        $ s
     nConsonants =
       length
-      . filter isConsonant
-      $ s
+        . filter isConsonant
+        $ s

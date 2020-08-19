@@ -1,24 +1,26 @@
-module Puzzle (
-  Puzzle,
-  freshPuzzle,
-  charInWord,
-  alreadyGuessed,
-  fillInCharacter,
-  incorrectGuesses,
-  puzzleDone,
-  wordToGuess
-) where
+module Puzzle
+  ( Puzzle,
+    freshPuzzle,
+    charInWord,
+    alreadyGuessed,
+    fillInCharacter,
+    incorrectGuesses,
+    puzzleDone,
+    wordToGuess,
+  )
+where
 
 import Data.List (intersperse)
 import Data.Maybe (isJust)
 
-data Puzzle =
-  Puzzle String [Maybe Char] [Char]
+data Puzzle
+  = Puzzle String [Maybe Char] [Char]
 
 instance Show Puzzle where
   show (Puzzle _ discovered guessed) =
     (intersperse ' ' $ fmap renderPuzzleChar discovered)
-    ++ "\nGuessed so far: " ++ guessed
+      ++ "\nGuessed so far: "
+      ++ guessed
 
 freshPuzzle :: String -> Puzzle
 freshPuzzle word =

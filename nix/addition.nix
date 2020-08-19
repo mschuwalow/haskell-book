@@ -5,9 +5,5 @@ mkDerivation {
   src = ../addition;
   license = stdenv.lib.licenses.asl20;
   isExecutable = true;
-  libraryHaskellDepends = [
-    base
-    hspec
-    QuickCheck
-  ];
+  libraryHaskellDepends = [ base hspec QuickCheck ];
 }

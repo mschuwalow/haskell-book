@@ -28,7 +28,7 @@ myMap f =
 myFilter :: (a -> Bool) -> [a] -> [a]
 myFilter f = foldr g []
   where
-    g next acc = bool acc (next:acc) (f next)
+    g next acc = bool acc (next : acc) (f next)
 
 squish :: [[a]] -> [a]
 squish =
@@ -43,9 +43,9 @@ squishAgain =
   squishMap id
 
 myMaximumBy :: (a -> a -> Ordering) -> [a] -> a
-myMaximumBy cmp (x:xs) =
+myMaximumBy cmp (x : xs) =
   foldl (\a b -> bool b a (LT == cmp a b)) x xs
 
 myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
-myMinimumBy cmp (x:xs) =
+myMinimumBy cmp (x : xs) =
   foldl (\a b -> bool b a (LT == cmp a b)) x xs

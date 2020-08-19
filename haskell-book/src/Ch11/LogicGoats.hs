@@ -1,5 +1,5 @@
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
 module Ch11.LogicGoats where
 
@@ -18,5 +18,6 @@ instance TooMany (Int, Int) where
 instance (Num a, TooMany a) => TooMany (a, a) where
   tooMany (n, m) = tooMany $ n + m
 
-newtype Goats =
-  Goats Int deriving (Eq, Show, TooMany)
+newtype Goats
+  = Goats Int
+  deriving (Eq, Show, TooMany)

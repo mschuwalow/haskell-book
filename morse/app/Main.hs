@@ -2,7 +2,7 @@ module Main where
 
 import Control.Monad (forever, when)
 import Data.List (intercalate)
-import Morse (stringToMorse, morseToChar)
+import Morse (morseToChar, stringToMorse)
 import System.Environment (getArgs)
 import System.Exit (exitFailure, exitSuccess)
 import System.IO (hGetLine, hIsEOF, stdin)
@@ -19,17 +19,17 @@ main = do
     _ -> argError
   where
     argError = do
-      putStrLn "Please specify the \
-               \first argument \
-               \as being 'from' or \
-               \'to' morse, such as: morse to"
+      putStrLn
+        "Please specify the \
+        \first argument \
+        \as being 'from' or \
+        \'to' morse, such as: morse to"
       exitFailure
 
 convertToMorse :: IO ()
 convertToMorse = forever $ do
   weAreDone <- hIsEOF stdin
   when weAreDone exitSuccess
-
   -- otherwise, proceed.
   line <- hGetLine stdin
   convertLine line
@@ -47,7 +47,6 @@ convertFromMorse :: IO ()
 convertFromMorse = forever $ do
   weAreDone <- hIsEOF stdin
   when weAreDone exitSuccess
-
   -- otherwise, proceed.
   line <- hGetLine stdin
   convertLine line

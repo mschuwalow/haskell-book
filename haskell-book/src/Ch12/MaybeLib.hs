@@ -17,24 +17,24 @@ fromMaybe a =
   mayybee a id
 
 listToMaybe :: [a] -> Maybe a
-listToMaybe (x:_) = Just x
+listToMaybe (x : _) = Just x
 listToMaybe _ = Nothing
 
 maybeToList :: Maybe a -> [a]
 maybeToList =
-  mayybee [] (:[])
+  mayybee [] (: [])
 
 catMaybes :: [Maybe a] -> [a]
 catMaybes =
   foldr f []
   where
-    f (Just a) xs = a:xs
+    f (Just a) xs = a : xs
     f _ xs = xs
 
 flipMaybe :: [Maybe a] -> Maybe [a]
 flipMaybe [] = Just []
-flipMaybe ((Just x):xs) =
-  fmap (x:)
-  . flipMaybe
-  $ xs
-flipMaybe (Nothing:_) = Nothing
+flipMaybe ((Just x) : xs) =
+  fmap (x :)
+    . flipMaybe
+    $ xs
+flipMaybe (Nothing : _) = Nothing

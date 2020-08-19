@@ -5,7 +5,5 @@ mkDerivation {
   src = ../hello;
   license = stdenv.lib.licenses.asl20;
   isExecutable = true;
-  executableHaskellDepends = [
-    base
-  ];
+  executableHaskellDepends = [ base ];
 }

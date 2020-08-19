@@ -6,14 +6,14 @@ import Test.QuickCheck
 dividedBy :: Integral a => a -> a -> (a, a)
 dividedBy num denom =
   go num denom 0
-    where
-      go n d count
-        | n < d = (count, n)
-        | otherwise = go (n - d) d (count + 1)
+  where
+    go n d count
+      | n < d = (count, n)
+      | otherwise = go (n - d) d (count + 1)
 
 multByAddition :: (Num a, Ord a) => a -> a -> a
 multByAddition a b
-  | b < 0 = - (go (-b) 0)
+  | b < 0 = - (go (- b) 0)
   | otherwise = go b 0
   where
     go 0 acc = acc

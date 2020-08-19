@@ -8,7 +8,7 @@ unfold f initial =
   where
     go =
       maybe Leaf (\(a1, b, a2) -> Node (go a1) b (go a2))
-      . f
+        . f
 
 treeBuild :: Integer -> BinaryTree Integer
 treeBuild n =

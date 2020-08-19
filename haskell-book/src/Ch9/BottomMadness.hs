@@ -1,9 +1,9 @@
 module Ch9.BottomMadness where
 
 -- boom
-x1 = [x^y | x <- [1..5], y <- [2, undefined]]
+x1 = [x ^ y | x <- [1 .. 5], y <- [2, undefined]]
 
-x2 = take 1 $ [x^y | x <- [1..5], y <- [2, undefined]]
+x2 = take 1 $ [x ^ y | x <- [1 .. 5], y <- [2, undefined]]
 
 -- boom
 x3 = sum [1, undefined, 3]

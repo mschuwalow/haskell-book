@@ -14,6 +14,6 @@ eftChar = eftEnum
 
 eftEnum :: (Ord a, Enum a) => a -> a -> [a]
 eftEnum x y
-  | x > y     = []
-  | x == y    = [x]
+  | x > y = []
+  | x == y = [x]
   | otherwise = x : eftEnum (succ x) y
