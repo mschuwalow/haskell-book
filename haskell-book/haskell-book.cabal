@@ -50,7 +50,9 @@ library
                        Ch13.Palindrome,
                        Ch13.Person,
                        Ch14.WordNumberTest,
-                       Ch14.QuickCheck
+                       Ch14.QuickCheck,
+                       Ch14.Gens,
+                       Ch14.Ciphers
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Wall

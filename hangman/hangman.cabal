@@ -14,14 +14,50 @@ cabal-version:       >=1.10
 extra-source-files:  README.md
 data-files:          data/dict.txt
 
-executable hangman
+library
   hs-source-dirs:      src
-  main-is:             Main.hs
-  other-modules:       Paths_hangman,
+  exposed-modules:     Game,
                        Puzzle,
                        Words
+  other-modules:       Paths_hangman
   default-language:    Haskell2010
   build-depends:       base >= 4.7 && < 5,
                        random,
                        split
-  ghc-options:         -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wredundant-constraints
+
+executable hangman-app
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  other-modules:       Paths_hangman
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5,
+                       hangman
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wredundant-constraints
+
+test-suite hangman-test
+  type:                exitcode-stdio-1.0
+  main-is:             Spec.hs
+  other-modules:       Paths_hangman
+  hs-source-dirs:      test
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wredundant-constraints
+                       -threaded
+                       -rtsopts
+                       -with-rtsopts=-N
+  build-depends:       base >=4.7 && <5,
+                       hangman,
+                       hspec,
+                       QuickCheck
+  default-language:    Haskell2010

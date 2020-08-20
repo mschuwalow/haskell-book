@@ -4,6 +4,7 @@
 
 module Ch14.QuickCheck where
 
+import Ch11.AsPatterns (capitalizeWord)
 import Data.Foldable (traverse_)
 import Data.List (sort)
 import Test.QuickCheck
@@ -17,6 +18,16 @@ quickCheckAny (T name t) = do
 
 half :: Fractional a => a -> a
 half x = x / 2
+
+twice :: (b -> b) -> b -> b
+twice f = f . f
+
+fourTimes :: (b -> b) -> b -> b
+fourTimes = twice . twice
+
+idempotency :: Eq b => (b -> b) -> b -> Bool
+idempotency f x =
+  (f x == twice f x) && (f x == fourTimes f x)
 
 -- / porperties
 
@@ -104,7 +115,9 @@ tests =
     T "compose functions with ." (prop_funCompose @Integer @Integer @Integer),
     T "foldr - concat relation" (prop_foldrConcat @Integer @[]),
     --, T "length - take"             (prop_length @Integer)
-    T "read - show" (prop_readShow @Integer)
+    T "read - show" (prop_readShow @Integer),
+    T "idempotency - capitalizeWord" (idempotency capitalizeWord),
+    T "idempotency - sort" (idempotency (sort @Integer))
   ]
 
 runQc :: IO ()

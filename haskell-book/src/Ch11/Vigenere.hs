@@ -26,9 +26,9 @@ vigenereCipher code =
 makeKey :: String -> String -> [(Char, Maybe Int)]
 makeKey message keyword = go message keyCycle
   where
-    keyCycle = cycle keyword
+    keyCycle = if null keyword then [] else cycle keyword
     go [] _ = []
     go xs [] = zip xs (repeat Nothing)
     go (x : xs) (y : ys)
-      | x == ' ' = (' ', Nothing) : go xs (y : ys)
-      | otherwise = (x, Just (Cipher.charVal y)) : go xs ys
+      | Cipher.encodeChar x && Cipher.encodeChar y = (x, Just (Cipher.charVal y)) : go xs ys
+      | otherwise = (x, Nothing) : go xs (y : ys)

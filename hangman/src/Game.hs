@@ -1,4 +1,4 @@
-module Main where
+module Game where
 
 import Data.Char (toLower)
 import Puzzle
@@ -13,15 +13,15 @@ import Words
 maxIncorrectGuesses :: Int
 maxIncorrectGuesses = 7
 
-main :: IO ()
-main = do
+runGame :: IO ()
+runGame = do
   hSetBuffering stdout NoBuffering
   word <- randomWord
-  let puzzle = freshPuzzle (fmap toLower word)
-  runGame puzzle
+  runGameWith $ freshPuzzle (fmap toLower word)
 
-runGame :: Puzzle -> IO ()
-runGame puzzle = do
+-- / main game loop
+runGameWith :: Puzzle -> IO ()
+runGameWith puzzle = do
   gameOver puzzle
   gameWin puzzle
   putStrLn $ "Current puzzle is: " ++ show puzzle
@@ -29,8 +29,8 @@ runGame puzzle = do
   putStr "\nGuess a letter: "
   guess <- getLine
   case guess of
-    [c] -> handleGuess puzzle c >>= runGame
-    _ -> putStrLn "Your guess must be a single character" >> runGame puzzle
+    [c] -> handleGuess puzzle c >>= runGameWith
+    _ -> putStrLn "Your guess must be a single character" >> runGameWith puzzle
 
 handleGuess :: Puzzle -> Char -> IO Puzzle
 handleGuess puzzle guess =

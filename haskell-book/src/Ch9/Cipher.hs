@@ -1,26 +1,24 @@
 module Ch9.Cipher where
 
 import Data.Char
+import GHC.Stack (HasCallStack)
 
 type Encode = String -> String
 
 type Decode = String -> String
 
-base :: Char -> Int
-base x =
-  if isLower x
-    then ord 'a'
-    else
-      if isUpper x
-        then ord 'A'
-        else 0
-
 encodeChar :: Char -> Bool
 encodeChar x =
-  isLower x || isUpper x
+  isAsciiLower x || isAsciiUpper x
 
 alphSize :: Int
 alphSize = length ['a' .. 'z']
+
+base :: HasCallStack => Char -> Int
+base x
+  | isAsciiLower x = ord 'a'
+  | isAsciiUpper x = ord 'A'
+  | otherwise = error $ "can only get base for ascii chars, input was `" ++ [x] ++ "`"
 
 charVal :: Char -> Int
 charVal x = ord x - base x
@@ -30,9 +28,6 @@ caesarCipher n =
   (ceasar n, ceasar (- n))
   where
     ceasar _ [] = []
-    ceasar key (x : xs) =
-      chr (shiftedVal + base x) : ceasar key xs
-      where
-        shiftedVal
-          | encodeChar x = ((charVal x) + key) `mod` alphSize
-          | otherwise = charVal x
+    ceasar key (x : xs)
+      | encodeChar x = chr ((((charVal x) + key) `mod` alphSize) + base x) : ceasar key xs
+      | otherwise = x : ceasar key xs
