@@ -1,4 +1,5 @@
 {-# LANGUAGE TypeApplications #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 
 module Main where
 
@@ -12,6 +13,7 @@ instance (Arbitrary Puzzle) where
     word <- arbitrary @String
     return $ freshPuzzle word
 
+prop_filledInSoFar :: Puzzle -> Char -> Bool
 prop_filledInSoFar puzzle c
   | charInWord puzzle c = (incorrectGuesses puzzle' == 0) && (alreadyGuessed puzzle' c)
   | otherwise = (incorrectGuesses puzzle' == 1) && (alreadyGuessed puzzle' c)
