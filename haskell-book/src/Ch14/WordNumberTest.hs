@@ -1,8 +1,11 @@
 module Ch14.WordNumberTest where
 
-import Test.Hspec
 import Ch8.NumbersIntoWords
-  (digitToWord, digits, wordNumber)
+  ( digitToWord,
+    digits,
+    wordNumber,
+  )
+import Test.Hspec
 
 main :: IO ()
 main = hspec $ do
@@ -19,5 +22,5 @@ main = hspec $ do
   describe "wordNumber" $ do
     it "one-zero-zero given 100" $ do
       wordNumber 100 `shouldBe` "one-zero-zero"
-    it "nine-zero-zero-one for 9001" $  do
+    it "nine-zero-zero-one for 9001" $ do
       wordNumber 9001 `shouldBe` "nine-zero-zero-one"

@@ -49,7 +49,13 @@ library
                        Ch13.Ciphers,
                        Ch13.Palindrome,
                        Ch13.Person,
-                       Ch14.WordNumberTest
+                       Ch14.WordNumberTest,
+                       Ch14.QuickCheck
   hs-source-dirs:      src
   default-language:    Haskell2010
-  ghc-options:         -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -Wno-type-defaults
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wredundant-constraints
+                       -Wno-type-defaults
