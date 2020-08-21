@@ -25,15 +25,9 @@ main = hspec $ do
   describe "Puzzle" $ do
     it "should update when guessing" $ do
       property prop_filledInSoFar
-    it "should win game when filling in all words"
-      $ do
-        (flip shouldBe) True
-        . puzzleDone
-        . (flip fillInCharacter) 't'
-        . (flip fillInCharacter) 's'
-        . (flip fillInCharacter) 'e'
-        . (flip fillInCharacter) 't'
-      $ freshPuzzle "test"
+    it "should win game when filling in all words" $ do
+      let puzzle = foldl fillInCharacter (freshPuzzle "test") "test"
+      puzzleDone puzzle `shouldBe` True
   describe "handleGuess" $ do
     it "should not change puzzle on identical guess" $
       let test = do
