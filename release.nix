@@ -48,7 +48,6 @@ let
   pkgs = nixpkgs { inherit overlays; };
 in {
   inherit compiler overlays pkgs;
-  addition = pkgs.myHaskellPackages.addition;
   hangman = pkgs.myHaskellPackages.hangman;
   haskell-book = pkgs.myHaskellPackages.haskell-book;
   hello = pkgs.myHaskellPackages.hello;

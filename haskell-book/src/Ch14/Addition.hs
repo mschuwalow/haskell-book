@@ -1,4 +1,4 @@
-module Addition where
+module Ch14.Addition where
 
 import Test.Hspec
 import Test.QuickCheck

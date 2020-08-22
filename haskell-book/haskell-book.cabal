@@ -49,6 +49,7 @@ library
                        Ch13.Ciphers,
                        Ch13.Palindrome,
                        Ch13.Person,
+                       Ch14.Addition,
                        Ch14.WordNumberTest,
                        Ch14.QuickCheck,
                        Ch14.Gens,
