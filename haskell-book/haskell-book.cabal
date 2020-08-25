@@ -68,7 +68,11 @@ library
                        Ch17.Identity,
                        Ch17.Constant,
                        Ch17.Upper,
-                       Ch17.List
+                       Ch17.List,
+                       Ch17.ZipList,
+                       Ch17.Validation,
+                       Ch17.Exercises,
+                       Ch17.Combinations
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Wall

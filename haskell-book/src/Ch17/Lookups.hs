@@ -4,7 +4,7 @@ import Data.List (elemIndex)
 
 added :: Maybe Integer
 added =
-  (+3) <$> (lookup 3 $ zip [1, 2, 3] [4, 5, 6])
+  (+ 3) <$> (lookup 3 $ zip [1, 2, 3] [4, 5, 6])
 
 y :: Maybe Integer
 y = lookup 3 $ zip [1, 2, 3] [4, 5, 6]
@@ -29,6 +29,7 @@ maxed = max' <$> x <*> y1
 
 xs :: [Integer]
 xs = [1, 2, 3]
+
 ys :: [Integer]
 ys = [4, 5, 6]
 
