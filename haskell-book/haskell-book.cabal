@@ -62,7 +62,10 @@ library
                        Ch15.Mem,
                        Ch16.HeavyLifting,
                        Ch16.Instances,
-                       Ch16.Exercises
+                       Ch16.Exercises,
+                       Ch17.Lookups,
+                       Ch17.Identity,
+                       Ch17.Constant
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Wall
