@@ -1,4 +1,4 @@
-{ mkDerivation, stdenv, base, either, hspec, QuickCheck }:
+{ mkDerivation, stdenv, base, either, hspec, QuickCheck, checkers }:
 mkDerivation {
   pname = "haskell-book";
   version = "0.0.0.1";
@@ -6,5 +6,5 @@ mkDerivation {
   license = stdenv.lib.licenses.asl20;
   isExecutable = false;
   isLibrary = true;
-  libraryHaskellDepends = [ base either hspec QuickCheck ];
+  libraryHaskellDepends = [ base either hspec QuickCheck checkers ];
 }
