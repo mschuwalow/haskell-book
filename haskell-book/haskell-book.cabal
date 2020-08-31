@@ -72,7 +72,8 @@ library
                        Ch17.ZipList,
                        Ch17.Validation,
                        Ch17.Exercises,
-                       Ch17.Combinations
+                       Ch17.Combinations,
+                       Ch18.Exercise
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Wall
