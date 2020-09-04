@@ -1,4 +1,5 @@
 module Rvrs where
+
 rvrs :: String -> String
 rvrs x =
   awesome ++ " " ++ is ++ " " ++ curry

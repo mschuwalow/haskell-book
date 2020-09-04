@@ -1,4 +1,5 @@
 module Print3broken where
+
 greeting :: String
 greeting = "yarr"
 
@@ -9,5 +10,5 @@ main :: IO ()
 main = do
   putStrLn greeting
   putStrLn printSecond
-   where
-     printSecond = "yerr"
+  where
+    printSecond = "yerr"
