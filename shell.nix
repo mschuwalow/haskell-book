@@ -7,8 +7,15 @@ let
   hie = all-hies.versions."${builtins.replaceStrings [ "-" "." ] [ "" "" ]
     release.compiler}";
 in pkgs.myHaskellPackages.shellFor {
-  packages = pkgs: with pkgs; [ hangman haskell-book hello morse ];
+  packages = pkgs: with pkgs; [ hangman haskell-book hello morse shawty ];
   withHoogle = true;
-  nativeBuildInputs =
-    [ hie pkgs.cabal-install pkgs.stack pkgs.nixfmt pkgs.ormolu pkgs.gnumake ];
+  nativeBuildInputs = [
+    hie
+    pkgs.cabal-install
+    pkgs.stack
+    pkgs.nixfmt
+    pkgs.ormolu
+    pkgs.gnumake
+    pkgs.docker-compose
+  ];
 }

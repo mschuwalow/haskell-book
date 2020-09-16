@@ -52,4 +52,5 @@ in {
   haskell-book = pkgs.myHaskellPackages.haskell-book;
   hello = pkgs.myHaskellPackages.hello;
   morse = pkgs.myHaskellPackages.morse;
+  shawty = pkgs.myHaskellPackages.shawty;
 }
