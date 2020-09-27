@@ -73,7 +73,11 @@ library
                        Ch17.Validation,
                        Ch17.Exercises,
                        Ch17.Combinations,
-                       Ch18.Exercise
+                       Ch18.Exercise,
+                       Ch20.Exercise,
+                       Ch21.Exercise,
+                       Ch21.SkiFree,
+                       Ch21.Tree
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Wall
