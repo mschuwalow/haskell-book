@@ -3,6 +3,7 @@
 module Ch21.Exercise where
 
 import Control.Applicative
+import Test.Hspec
 import Test.QuickCheck
 import Test.QuickCheck.Checkers
 import Test.QuickCheck.Classes
@@ -167,12 +168,29 @@ instance (Eq a, Eq b) => EqProp (Bigger a b) where
   (=-=) = eq
 
 runQc :: IO ()
-runQc = do
-  quickBatch $ traversable (undefined :: Identity (Int, Int, [Int]))
-  quickBatch $ traversable (undefined :: Constant Int (Int, Int, [Int]))
-  quickBatch $ traversable (undefined :: Optional (Int, Int, [Int]))
-  quickBatch $ traversable (undefined :: List (Int, Int, [Int]))
-  quickBatch $ traversable (undefined :: Three Int Int (Int, Int, [Int]))
-  quickBatch $ traversable (undefined :: Pair Int (Int, Int, [Int]))
-  quickBatch $ traversable (undefined :: Big Int (Int, Int, [Int]))
-  quickBatch $ traversable (undefined :: Bigger Int (Int, Int, [Int]))
+runQc =
+  hspec $ do
+    describe "Identity" $ do
+      it "Traverse laws" $ do
+        quickBatch $ traversable (undefined :: Identity (Int, Int, [Int]))
+    describe "Constant" $ do
+      it "Traverse laws" $ do
+        quickBatch $ traversable (undefined :: Constant Int (Int, Int, [Int]))
+    describe "Optional" $ do
+      it "Traverse laws" $ do
+        quickBatch $ traversable (undefined :: Optional (Int, Int, [Int]))
+    describe "List" $ do
+      it "Traverse laws" $ do
+        quickBatch $ traversable (undefined :: List (Int, Int, [Int]))
+    describe "Three" $ do
+      it "Traverse laws" $ do
+        quickBatch $ traversable (undefined :: Three Int Int (Int, Int, [Int]))
+    describe "Pair" $ do
+      it "Traverse laws" $ do
+        quickBatch $ traversable (undefined :: Pair Int (Int, Int, [Int]))
+    describe "Big" $ do
+      it "Traverse laws" $ do
+        quickBatch $ traversable (undefined :: Big Int (Int, Int, [Int]))
+    describe "Bigger" $ do
+      it "Traverse laws" $ do
+        quickBatch $ traversable (undefined :: Bigger Int (Int, Int, [Int]))
