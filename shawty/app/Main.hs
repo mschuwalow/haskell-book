@@ -4,6 +4,8 @@ module Main where
 
 import Control.Monad (replicateM)
 import Control.Monad.IO.Class (liftIO)
+import Control.Monad.Trans.Class
+import Control.Monad.Trans.Reader
 import qualified Data.ByteString.Char8 as BC
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
 import qualified Data.Text.Lazy as TL
@@ -73,9 +75,10 @@ shortyFound :: TL.Text -> TL.Text
 shortyFound tbs =
   TL.concat ["<a href=\"", tbs, "\">", tbs, "</a>"]
 
-app :: R.Connection -> ScottyM ()
-app rConn = do
-  get "/" $ do
+app :: ReaderT R.Connection ScottyM ()
+app = do
+  rConn <- ask
+  lift $ get "/" $ do
     uri <- param "uri"
     let parsedUri :: Maybe URI
         parsedUri = parseURI (TL.unpack uri)
@@ -93,7 +96,7 @@ app rConn = do
               resp <- liftIO (saveUri rConn shorty uri')
               html (shortyCreated resp shawty)
       Nothing -> text (shortyAintUri uri)
-  get "/:short" $ do
+  lift $ get "/:short" $ do
     short <- param "short"
     uri <- liftIO (getUri rConn short)
     case uri of
@@ -108,4 +111,4 @@ app rConn = do
 main :: IO ()
 main = do
   rConn <- R.connect R.defaultConnectInfo
-  scotty 3000 (app rConn)
+  scotty 3000 (runReaderT app rConn)
