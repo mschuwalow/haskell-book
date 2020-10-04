@@ -1,6 +1,6 @@
 {-# LANGUAGE DerivingVia #-}
 
-module Ch18.Exercise where
+module Ch18.Exercises where
 
 import Control.Monad (join)
 import Test.QuickCheck

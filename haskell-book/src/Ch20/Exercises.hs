@@ -1,4 +1,4 @@
-module Ch20.Exercise where
+module Ch20.Exercises where
 
 import Data.Monoid
 

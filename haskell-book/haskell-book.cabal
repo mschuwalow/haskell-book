@@ -73,16 +73,21 @@ library
                        Ch17.Validation,
                        Ch17.Exercises,
                        Ch17.Combinations,
-                       Ch18.Exercise,
-                       Ch20.Exercise,
-                       Ch21.Exercise,
+                       Ch18.Exercises,
+                       Ch20.Exercises,
+                       Ch21.Exercises,
                        Ch21.SkiFree,
-                       Ch21.Tree
+                       Ch21.Tree,
+                       Ch22.WarmingUp,
+                       Ch22.Reader,
+                       Ch22.ReaderPractice
   hs-source-dirs:      src
   default-language:    Haskell2010
-  ghc-options:         -Wall
+  ghc-options:         -Werror
+                       -Wall
                        -Wcompat
                        -Wincomplete-record-updates
                        -Wincomplete-uni-patterns
                        -Wredundant-constraints
                        -Wno-type-defaults
+                       -Wno-name-shadowing

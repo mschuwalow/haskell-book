@@ -1,6 +1,6 @@
 {-# LANGUAGE DerivingVia #-}
 
-module Ch21.Exercise where
+module Ch21.Exercises where
 
 import Control.Applicative
 import Test.Hspec

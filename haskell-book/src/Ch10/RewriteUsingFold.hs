@@ -46,7 +46,11 @@ squishAgain =
 myMaximumBy :: (a -> a -> Ordering) -> [a] -> a
 myMaximumBy cmp (x : xs) =
   foldl (\a b -> bool b a (LT == cmp a b)) x xs
+myMaximumBy _ [] =
+  error "empty list"
 
 myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
 myMinimumBy cmp (x : xs) =
   foldl (\a b -> bool b a (LT == cmp a b)) x xs
+myMinimumBy _ [] =
+  error "empty list"
