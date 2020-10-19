@@ -1,6 +1,7 @@
 module Ch24.Exercises where
 
 import Control.Applicative
+import Data.Functor
 import Text.Trifecta
 
 -- 1.
@@ -34,12 +35,14 @@ instance Ord SemVer where
     | null r2 = LT
     | otherwise = compare r1 r2
 
-examples :: [String]
-examples =
+semVerExamples :: [String]
+semVerExamples =
   [ "1.0.0-alpha+001",
     "1.0.0+20130313144700",
     "1.0.0-beta+exp.sha.5114f85",
-    "1.0.0+21AF26D3—-117B344092BD"
+    "1.0.0+21AF26D3-117B344092BD",
+    "1.0.0-alpha+001",
+    "1.0.0-001+alpha"
   ]
 
 positiveInteger :: Parser Integer
@@ -47,17 +50,31 @@ positiveInteger = do
   i <- integer
   if (i >= 0) then return i else fail "most be positive integer"
 
+validString :: Parser String
+validString =
+  some (oneOf (mconcat [['0' .. '9'], ['a' .. 'z'], ['A' .. 'Z'], ['-']]))
+
+validInteger :: Parser Integer
+validInteger =
+  try parseInt <|> parseZero
+  where
+    parseInt = do
+      x <- oneOf ['1' .. '9']
+      xs <- many digit
+      return $ read (x : xs)
+    parseZero = char '0' $> 0
+
 numberOrString :: Parser NumberOrString
 numberOrString = do
-  (NOSS <$> (some letter)) <|> (NOSI <$> positiveInteger)
+  try (NOSI <$> validInteger <* notFollowedBy validString) <|> (NOSS <$> validString)
 
 parseVersion :: Parser (Integer, Integer, Integer)
 parseVersion = do
-  major <- positiveInteger
+  major <- validInteger
   _ <- char '.'
-  minor <- positiveInteger
+  minor <- validInteger
   _ <- char '.'
-  patch <- positiveInteger
+  patch <- validInteger
   return (major, minor, patch)
 
 parseRelease :: Parser Release
@@ -84,7 +101,7 @@ parseSemVer :: Parser SemVer
 parseSemVer = do
   (maj, min, pat) <- parseVersion
   release <- option [] (try parseRelease)
-  meta <- option [] (try parseMeta)
+  meta <- option [] parseMeta
   return $ SemVer maj min pat release meta
 
 -- 2.

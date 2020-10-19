@@ -25,7 +25,8 @@ library
                        parsec,
                        attoparsec,
                        aeson,
-                       ghc-prim
+                       ghc-prim,
+                       parsers
   exposed-modules:     Ch8.NumbersIntoWords,
                        Ch9.EnumFromTo,
                        Ch9.ThyFearfulSymmetry,
@@ -103,7 +104,8 @@ library
                        Ch24.Marshalling,
                        Ch24.Exercises,
                        Ch24.LogFile,
-                       Ch24.IpAddress
+                       Ch24.IPAddress,
+                       Ch24.DOT
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Werror
