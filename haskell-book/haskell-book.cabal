@@ -8,16 +8,24 @@ maintainer:          maxim.schuwalow@gmail.com
 extra-source-files:  README.md, CHANGELOG.md
 
 library
-  build-depends:       base         >= 4.7 && < 5,
-                       random       ^>= 1.1,
-                       transformers ^>=0.5.6.2,
-                       time         ^>= 1.9.3,
-                       containers   ^>= 0.6.2.1,
-                       either       ^>= 5.0.1.1,
-                       dlist        ^>= 0.8.0.7,
+  build-depends:       base,
+                       random,
+                       transformers,
+                       time,
+                       containers,
+                       either,
+                       dlist,
+                       trifecta,
                        hspec,
                        checkers,
-                       QuickCheck
+                       QuickCheck,
+                       bytestring,
+                       text,
+                       raw-strings-qq,
+                       parsec,
+                       attoparsec,
+                       aeson,
+                       ghc-prim
   exposed-modules:     Ch8.NumbersIntoWords,
                        Ch9.EnumFromTo,
                        Ch9.ThyFearfulSymmetry,
@@ -87,7 +95,15 @@ library
                        Ch23.Dies,
                        Ch23.Moi,
                        Ch23.FizzBuzz,
-                       Ch23.Exercises
+                       Ch23.Exercises,
+                       Ch24.LearnParsers,
+                       Ch24.Fractions,
+                       Ch24.Ini,
+                       Ch24.BT,
+                       Ch24.Marshalling,
+                       Ch24.Exercises,
+                       Ch24.LogFile,
+                       Ch24.IpAddress
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Werror
