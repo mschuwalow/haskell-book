@@ -1,3 +1,5 @@
+{-# LANGUAGE DerivingVia #-}
+
 module Ch6.Eq where
 
 data TisAnInteger = TisAn Integer
