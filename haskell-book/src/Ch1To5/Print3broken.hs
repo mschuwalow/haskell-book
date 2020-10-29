@@ -1,4 +1,4 @@
-module Print3broken where
+module Ch1To5.Print3broken where
 
 greeting :: String
 greeting = "yarr"

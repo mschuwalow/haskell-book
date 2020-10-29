@@ -1,5 +1,5 @@
 -- FunctionWithLet.hs
-module FunctionWithLet where
+module Ch1To5.FunctionWithLet where
 
 printInc2 :: (Show a, Num a) => a -> IO ()
 printInc2 n =

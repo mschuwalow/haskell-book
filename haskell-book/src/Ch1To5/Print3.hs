@@ -1,4 +1,4 @@
-module Print3 where
+module Ch1To5.Print3 where
 
 myGreeting :: String
 myGreeting = "hello" ++ " world!"

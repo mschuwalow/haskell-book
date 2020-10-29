@@ -1,5 +1,5 @@
 -- Learn.hs
-module Learn where
+module Ch1To5.Learn where
 
 x :: Integer
 x = 10 * 5 + y

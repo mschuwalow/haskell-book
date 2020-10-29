@@ -1,4 +1,4 @@
-module Addadd where
+module Ch1To5.Addadd where
 
 addadd :: String -> String
 addadd x = x ++ "!"

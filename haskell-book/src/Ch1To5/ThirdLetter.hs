@@ -1,4 +1,4 @@
-module ThirdLetter where
+module Ch1To5.ThirdLetter where
 
 thirdletter :: String -> Char
 thirdletter x = x !! 2

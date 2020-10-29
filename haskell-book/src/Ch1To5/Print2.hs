@@ -1,4 +1,4 @@
-module Print2 where
+module Ch1To5.Print2 where
 
 main :: IO ()
 main = do

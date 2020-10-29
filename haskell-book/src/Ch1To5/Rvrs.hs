@@ -1,4 +1,4 @@
-module Rvrs where
+module Ch1To5.Rvrs where
 
 rvrs :: String -> String
 rvrs x =

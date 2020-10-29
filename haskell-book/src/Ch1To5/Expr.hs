@@ -1,4 +1,4 @@
-module Expr where
+module Ch1To5.Expr where
 
 data Expr
   = Const Integer

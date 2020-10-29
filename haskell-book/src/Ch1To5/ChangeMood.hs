@@ -1,4 +1,4 @@
-module ChangeMood where
+module Ch1To5.ChangeMood where
 
 data Mood = Blah | Woot deriving (Show)
 

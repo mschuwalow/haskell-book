@@ -1,4 +1,4 @@
-module Hwoo where
+module Ch1To5.Hwoo where
 
 f1 :: Integer
 f1 = x * 3 + y

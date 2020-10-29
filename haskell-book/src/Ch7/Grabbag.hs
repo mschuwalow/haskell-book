@@ -50,7 +50,8 @@ avgGrade x
   | y >= 0.7 = 'C'
   | y >= 0.59 = 'D'
   | otherwise = 'F'
-  where y = x / 100
+  where
+    y = x / 100
 
 pal :: Eq a => [a] -> Bool
 pal xs
@@ -62,11 +63,14 @@ number x
   | x < 0 = -1
   | x == 0 = 0
   | otherwise = 1
+
 -- chapter excerise
 tensDigit :: Integral a => a -> a
 tensDigit x = d
-  where xLast = fst . (`divMod` 10) $ x
-        d = snd . (`divMod` 10) $ xLast
+  where
+    xLast = fst . (`divMod` 10) $ x
+    d = snd . (`divMod` 10) $ xLast
+
 hunsD :: Integer -> Integer
 hunsD = (`mod` 10) . (`div` 100)
 

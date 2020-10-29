@@ -1,4 +1,4 @@
-module Example where
+module Ch1To5.Example where
 
 perimeterxy :: Double
 perimeterxy = (x * 2) + (y * 2)

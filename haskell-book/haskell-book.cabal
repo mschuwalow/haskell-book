@@ -10,15 +10,30 @@ extra-source-files:  README.md, CHANGELOG.md
 library
   build-depends:       base        >= 4.13.0 && < 4.14,
                        time        >= 1.9.3 && < 1.10
-  exposed-modules:     Example,
-                       Learn,
-                       Hwoo,
-                       FunctionWithLet,
-                       FunctionWithWhere,
-                       ChangeMood,
-                       Ch6.Eq,
-                       Ch7.Grabbag,
-                       Ch7.CasePractice
+  exposed-modules:    Ch1To5.Print1,
+                      Ch1To5.Arith3Broken,
+                      Ch1To5.ChangeMood,
+                      Ch1To5.Example,
+                      Ch1To5.Expr,
+                      Ch1To5.FunctionWithLet,
+                      Ch1To5.FunctionWithWhere,
+                      Ch1To5.Hwoo,
+                      Ch1To5.Learn,
+                      Ch1To5.Print2,
+                      Ch1To5.Print3,
+                      Ch1To5.Print3broken,
+                      Ch1To5.Rvrs,
+                      Ch1To5.Sing,
+                      Ch1To5.ThirdLetter,
+                      Ch1To5.WriedwaxOn,
+                      Ch1To5.TopOrLocal,
+                      Ch1To5.Addadd,
+                      Ch6.Eq,
+                      Ch6.Experiments,
+                      Ch6.Person,
+                      Ch7.CasePractice,
+                      Ch7.Grabbag,
+                      Ch8.Exercise
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Wall -Werror -Wno-type-defaults -Wno-name-shadowing
