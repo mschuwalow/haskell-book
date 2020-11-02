@@ -33,7 +33,8 @@ library
                       Ch6.Person,
                       Ch7.CasePractice,
                       Ch7.Grabbag,
-                      Ch8.Exercise
+                      Ch8.Exercise,
+                      Ch8.WordNumber
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Wall -Werror -Wno-type-defaults -Wno-name-shadowing
