@@ -35,7 +35,8 @@ library
                       Ch7.Grabbag,
                       Ch8.Exercise,
                       Ch8.WordNumber,
-                      Ch8.Example
+                      Ch8.Example,
+                      Ch9.Exercise
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Wall -Werror -Wno-type-defaults -Wno-name-shadowing
