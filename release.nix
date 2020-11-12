@@ -53,4 +53,5 @@ in {
   hello = pkgs.myHaskellPackages.hello;
   morse = pkgs.myHaskellPackages.morse;
   shawty = pkgs.myHaskellPackages.shawty;
+  hit-counter = pkgs.myHaskellPackages.hit-counter;
 }
