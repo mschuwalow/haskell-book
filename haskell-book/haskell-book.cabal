@@ -114,7 +114,8 @@ library
                        Ch26.ReaderT,
                        Ch26.StateT,
                        Ch26.OuterInner,
-                       Ch26.Exercises
+                       Ch26.Exercises,
+                       Ch27.Exercises
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Werror
