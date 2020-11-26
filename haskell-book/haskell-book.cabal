@@ -10,7 +10,8 @@ extra-source-files:  README.md, CHANGELOG.md
 library
   build-depends:       base        >= 4.13.0 && < 4.14,
                        time        >= 1.9.3 && < 1.10
-  exposed-modules:    Ch9.Exercise,
+  exposed-modules:    Ch9.Ciphers,
+                      Ch9.Exercise,
                       Ch1To5.Print1,
                       Ch1To5.Arith3Broken,
                       Ch1To5.ChangeMood,

@@ -15,5 +15,4 @@ listUntil' n =
   where
     go x acc
       | x < 0 = acc
-      | otherwise = go (x - 1) (x:acc)
-
+      | otherwise = go (x - 1) (x : acc)

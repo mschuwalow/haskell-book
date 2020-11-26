@@ -1,5 +1,7 @@
 module Ch8.WordNumber where
+
 import Data.List (intersperse)
+
 wordNumber :: Int -> String
 wordNumber = concat . intersperse "-" . fmap digitToWord . digits
 
@@ -20,4 +22,3 @@ digitToWord 7 = "seven"
 digitToWord 8 = "eight"
 digitToWord 9 = "nine"
 digitToWord _ = error "invalid"
-
