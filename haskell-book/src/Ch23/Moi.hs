@@ -1,7 +1,6 @@
 module Ch23.Moi where
 
-newtype Moi s a
-  = Moi {runMoi :: s -> (a, s)}
+newtype Moi s a = Moi {runMoi :: s -> (a, s)}
 
 instance Functor (Moi s) where
   fmap f (Moi g) =

@@ -28,9 +28,9 @@ addResult n = do
 
 main' :: IO ()
 main' =
-  mapM_ putStrLn
-    $ reverse
-    $ fizzbuzzList [1 .. 100]
+  mapM_ putStrLn $
+    reverse $
+      fizzbuzzList [1 .. 100]
 
 -- state using DList
 fizzbuzzDList :: [Integer] -> DL.DList String

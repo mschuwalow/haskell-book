@@ -78,35 +78,37 @@ shortyFound tbs =
 app :: ReaderT R.Connection ScottyM ()
 app = do
   rConn <- ask
-  lift $ get "/" $ do
-    uri <- param "uri"
-    let parsedUri :: Maybe URI
-        parsedUri = parseURI (TL.unpack uri)
-    case parsedUri of
-      Just _ -> do
-        shawty <- liftIO shortyGen
-        let shorty = BC.pack shawty
-        checkDup <- liftIO (getUri rConn shorty)
-        case checkDup of
-          Left reply -> text (TL.pack (show reply))
-          Right existing -> case existing of
-            Just _ -> text "internal error: duplicate shortened urls"
-            Nothing -> do
-              let uri' = encodeUtf8 (TL.toStrict uri)
-              resp <- liftIO (saveUri rConn shorty uri')
-              html (shortyCreated resp shawty)
-      Nothing -> text (shortyAintUri uri)
-  lift $ get "/:short" $ do
-    short <- param "short"
-    uri <- liftIO (getUri rConn short)
-    case uri of
-      Left reply -> text (TL.pack (show reply))
-      Right mbBS -> case mbBS of
-        Nothing -> text "uri not found"
-        Just bs -> html (shortyFound tbs)
-          where
-            tbs :: TL.Text
-            tbs = TL.fromStrict (decodeUtf8 bs)
+  lift $
+    get "/" $ do
+      uri <- param "uri"
+      let parsedUri :: Maybe URI
+          parsedUri = parseURI (TL.unpack uri)
+      case parsedUri of
+        Just _ -> do
+          shawty <- liftIO shortyGen
+          let shorty = BC.pack shawty
+          checkDup <- liftIO (getUri rConn shorty)
+          case checkDup of
+            Left reply -> text (TL.pack (show reply))
+            Right existing -> case existing of
+              Just _ -> text "internal error: duplicate shortened urls"
+              Nothing -> do
+                let uri' = encodeUtf8 (TL.toStrict uri)
+                resp <- liftIO (saveUri rConn shorty uri')
+                html (shortyCreated resp shawty)
+        Nothing -> text (shortyAintUri uri)
+  lift $
+    get "/:short" $ do
+      short <- param "short"
+      uri <- liftIO (getUri rConn short)
+      case uri of
+        Left reply -> text (TL.pack (show reply))
+        Right mbBS -> case mbBS of
+          Nothing -> text "uri not found"
+          Just bs -> html (shortyFound tbs)
+            where
+              tbs :: TL.Text
+              tbs = TL.fromStrict (decodeUtf8 bs)
 
 main :: IO ()
 main = do

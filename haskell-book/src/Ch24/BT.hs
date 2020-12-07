@@ -3,8 +3,8 @@
 module Ch24.BT where
 
 import Control.Applicative
-import qualified Data.Attoparsec.ByteString as A
 import Data.Attoparsec.ByteString (parseOnly)
+import qualified Data.Attoparsec.ByteString as A
 import Data.ByteString (ByteString)
 import Text.Parsec (Parsec, parseTest)
 import Text.Trifecta hiding (parseTest)

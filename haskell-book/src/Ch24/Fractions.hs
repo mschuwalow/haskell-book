@@ -1,7 +1,7 @@
 module Ch24.Fractions where
 
 import Control.Applicative
-import Data.Ratio ((%), Ratio)
+import Data.Ratio (Ratio, (%))
 import Text.Trifecta
 
 badFraction :: [Char]

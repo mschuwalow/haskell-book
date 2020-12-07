@@ -115,7 +115,8 @@ library
                        Ch26.StateT,
                        Ch26.OuterInner,
                        Ch26.Exercises,
-                       Ch27.Exercises
+                       Ch27.Exercises,
+                       Ch28.Exercises
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Werror
@@ -126,3 +127,20 @@ library
                        -Wredundant-constraints
                        -Wno-type-defaults
                        -Wno-name-shadowing
+
+Benchmark list
+  type:                exitcode-stdio-1.0
+  build-depends:       base, criterion, haskell-book
+  main-is:             benchmarks/List.hs
+  default-language:    Haskell2010
+  ghc-options:         -main-is List
+                       -O2
+
+Benchmark list-vs-map
+  type:                exitcode-stdio-1.0
+  build-depends:       base, containers, criterion, haskell-book
+  main-is:             benchmarks/ListVsMap.hs
+  default-language:    Haskell2010
+  ghc-options:         -main-is ListVsMap
+                       -O2
+

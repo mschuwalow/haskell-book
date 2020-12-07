@@ -1,9 +1,8 @@
 module Ch15.Mem where
 
-newtype Mem s a
-  = Mem
-      { runMem :: s -> (a, s)
-      }
+newtype Mem s a = Mem
+  { runMem :: s -> (a, s)
+  }
 
 instance Semigroup a => Semigroup (Mem s a) where
   (Mem f) <> (Mem g) = Mem $ \s ->

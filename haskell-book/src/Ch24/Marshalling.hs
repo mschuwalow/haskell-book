@@ -16,11 +16,10 @@ sectionJson =
 }
 |]
 
-data TestData
-  = TestData
-      { section :: Host,
-        what :: Color
-      }
+data TestData = TestData
+  { section :: Host,
+    what :: Color
+  }
   deriving (Eq, Show)
 
 instance FromJSON TestData where

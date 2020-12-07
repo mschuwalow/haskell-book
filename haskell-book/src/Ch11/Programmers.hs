@@ -14,11 +14,10 @@ data ProgLang
   | PureScript
   deriving (Eq, Show)
 
-data Programmer
-  = Programmer
-      { os :: OperatingSystem,
-        lang :: ProgLang
-      }
+data Programmer = Programmer
+  { os :: OperatingSystem,
+    lang :: ProgLang
+  }
   deriving (Eq, Show)
 
 allOperatingSystems :: [OperatingSystem]

@@ -1,6 +1,6 @@
 let
-  rev = "3506bce1d405f078c09a5201e3bb46eb64d5e9e7";
-  sha256 = "1hhdcyd0fsn97z2xhz5676rhs4rjcy7phw0mmgjqamw7mg6mb6g4";
+  rev = "e34208e10033315fddf6909d3ff68e2d3cf48a23";
+  sha256 = "0ngkx5ny7bschmiwc5q9yza8fdwlc3zg47avsywwp8yn96k2cpmg";
 in import (builtins.fetchTarball {
   url = "https://github.com/NixOS/nixpkgs/tarball/${rev}";
   inherit sha256;

@@ -2,8 +2,7 @@ module Ch26.EitherT where
 
 import Control.Monad.Trans.Class
 
-newtype EitherT e m a
-  = EitherT {runEitherT :: m (Either e a)}
+newtype EitherT e m a = EitherT {runEitherT :: m (Either e a)}
 
 instance
   Functor m =>

@@ -34,8 +34,7 @@ instance
         (2, fmap Only arbitrary)
       ]
 
-newtype First' a
-  = First' {unFirst' :: Optional a}
+newtype First' a = First' {unFirst' :: Optional a}
   deriving (Eq, Show)
 
 instance Semigroup (First' a) where

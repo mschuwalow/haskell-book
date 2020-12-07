@@ -27,6 +27,7 @@ factorialScan n = (scanl (*) 1 [1 .. n]) !! n
 --Amin
 factorial :: (Num b, Enum b) => Int -> [b]
 factorial n = (scanl (flip (*)) 1 . take n) [1 ..]
+
 -- factorialScan 10  ->  3628800
 
 {-
@@ -34,7 +35,6 @@ factorial n = (scanl (flip (*)) 1 . take n) [1 ..]
 scanl (+) 1 [1..3]
 [1, 1 + 1, (1 + 1) + 2, ((1 + 1) + 2) + 3]
 [1,2,4,7]
-
 
 fibs :: Num a => [a]
 fibs = 1 : scanl (+) 1 fibs

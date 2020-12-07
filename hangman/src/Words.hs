@@ -6,10 +6,9 @@ where
 import Paths_hangman (getDataFileName)
 import System.Random (randomRIO)
 
-newtype WordList
-  = WordList
-      { unWordList :: [String]
-      }
+newtype WordList = WordList
+  { unWordList :: [String]
+  }
   deriving (Eq, Show)
 
 minWordLength :: Int

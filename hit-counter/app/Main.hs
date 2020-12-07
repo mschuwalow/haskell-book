@@ -13,14 +13,13 @@ import qualified Data.Text.Lazy as TL
 import System.Environment (getArgs)
 import Web.Scotty.Trans
 
-data Config
-  = Config
-      { -- that's one, one click!
-        -- two...two clicks!
-        -- Three BEAUTIFUL clicks! ah ah ahhhh
-        counts :: IORef (M.Map Text Integer),
-        prefix :: Text
-      }
+data Config = Config
+  { -- that's one, one click!
+    -- two...two clicks!
+    -- Three BEAUTIFUL clicks! ah ah ahhhh
+    counts :: IORef (M.Map Text Integer),
+    prefix :: Text
+  }
 
 type Scotty =
   ScottyT Text (ReaderT Config IO)

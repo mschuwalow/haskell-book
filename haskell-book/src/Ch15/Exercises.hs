@@ -122,8 +122,7 @@ instance
         (2, fmap Snd arbitrary)
       ]
 
-newtype Combine a b
-  = Combine {unCombine :: (a -> b)}
+newtype Combine a b = Combine {unCombine :: (a -> b)}
   deriving (Arbitrary) via (a -> b)
 
 instance
@@ -138,8 +137,7 @@ instance
   where
   mempty = Combine $ \_ -> mempty
 
-newtype Comp a
-  = Comp {unComp :: (a -> a)}
+newtype Comp a = Comp {unComp :: (a -> a)}
   deriving (Arbitrary) via (a -> a)
 
 instance Semigroup (Comp a) where

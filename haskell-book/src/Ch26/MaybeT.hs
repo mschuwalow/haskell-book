@@ -3,8 +3,7 @@ module Ch26.MaybeT where
 import Control.Monad.IO.Class
 import Control.Monad.Trans.Class
 
-newtype MaybeT m a
-  = MaybeT {runMaybeT :: m (Maybe a)}
+newtype MaybeT m a = MaybeT {runMaybeT :: m (Maybe a)}
 
 instance
   (Functor m) =>

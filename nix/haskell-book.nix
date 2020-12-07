@@ -1,5 +1,5 @@
 { mkDerivation, stdenv, base, either, hspec, QuickCheck, checkers, trifecta
-, raw-strings-qq, parsec, attoparsec, aeson, ghc-prim, parsers }:
+, raw-strings-qq, parsec, attoparsec, aeson, ghc-prim, parsers, criterion }:
 mkDerivation {
   pname = "haskell-book";
   version = "0.0.0.1";
@@ -20,5 +20,6 @@ mkDerivation {
     aeson
     ghc-prim
     parsers
+    criterion
   ];
 }

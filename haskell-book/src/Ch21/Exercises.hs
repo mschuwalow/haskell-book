@@ -22,8 +22,7 @@ instance Foldable Identity where
 instance Traversable Identity where
   sequenceA (Identity fa) = fmap Identity fa
 
-newtype Constant a b
-  = Constant {getConstant :: a}
+newtype Constant a b = Constant {getConstant :: a}
   deriving (Eq, Show, Ord)
   deriving (EqProp, Arbitrary) via a
 

@@ -6,34 +6,40 @@ import Control.Monad.Trans.Reader
 
 embedded ::
   MaybeT
-    ( ExceptT String
+    ( ExceptT
+        String
         (ReaderT () IO)
     )
     Int
 embedded = return 1
 
 maybeUnwrap ::
-  ExceptT String
+  ExceptT
+    String
     (ReaderT () IO)
     (Maybe Int)
 maybeUnwrap = runMaybeT embedded
 
 eitherUnwrap ::
-  ReaderT () IO
+  ReaderT
+    ()
+    IO
     (Either String (Maybe Int))
 eitherUnwrap = runExceptT maybeUnwrap
 
 readerUnwrap ::
   () ->
   IO
-    ( Either String
+    ( Either
+        String
         (Maybe Int)
     )
 readerUnwrap = runReaderT eitherUnwrap
 
 embedded' ::
   MaybeT
-    ( ExceptT String
+    ( ExceptT
+        String
         (ReaderT () IO)
     )
     Int

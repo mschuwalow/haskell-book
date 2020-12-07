@@ -1,7 +1,7 @@
 module Ch24.IPAddress where
 
 import Control.Applicative
-import Data.Bits ((.&.), (.|.), shiftL, shiftR)
+import Data.Bits (shiftL, shiftR, (.&.), (.|.))
 import Data.Char (digitToInt)
 import Data.Functor
 import Data.List (intercalate, intersperse)

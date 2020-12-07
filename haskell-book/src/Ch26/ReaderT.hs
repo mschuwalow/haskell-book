@@ -3,8 +3,7 @@ module Ch26.ReaderT where
 import Control.Monad.IO.Class
 import Control.Monad.Trans.Class
 
-newtype ReaderT r m a
-  = ReaderT {runReaderT :: r -> m a}
+newtype ReaderT r m a = ReaderT {runReaderT :: r -> m a}
 
 instance
   (Functor m) =>

@@ -7,8 +7,7 @@ import Control.Monad.IO.Class
 import Control.Monad.Trans.Class
 import Data.Bifunctor (first)
 
-newtype StateT s m a
-  = StateT {runStateT :: s -> m (a, s)}
+newtype StateT s m a = StateT {runStateT :: s -> m (a, s)}
 
 instance
   Functor m =>

@@ -55,8 +55,8 @@ data DailyLog
 instance Show DailyLog where
   show (DailyLog date activities) =
     unlines $
-      ("# " ++ show date)
-        : (map show activities)
+      ("# " ++ show date) :
+      (map show activities)
 
 ---
 
@@ -102,7 +102,7 @@ genStringNoComments :: Gen String
 genStringNoComments =
   arbitrary
     & (`suchThat` (not . isInfixOf "--"))
-    . (`suchThat` (not . isInfixOf "\n"))
+      . (`suchThat` (not . isInfixOf "\n"))
 
 instance Arbitrary Date where
   arbitrary = liftA3 Date genPositiveInteger genPositiveInteger genPositiveInteger
@@ -153,6 +153,7 @@ example =
 main :: IO ()
 main = hspec $ do
   describe "parseLog" $ do
-    it "should parse generated logs" $ property $
-      \(log :: DailyLog) ->
-        (maybeSuccess . parseString parseLog mempty . show $ log) == (Just [log])
+    it "should parse generated logs" $
+      property $
+        \(log :: DailyLog) ->
+          (maybeSuccess . parseString parseLog mempty . show $ log) == (Just [log])
